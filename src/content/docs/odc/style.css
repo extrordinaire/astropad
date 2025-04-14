@@ -1,0 +1,14 @@
+ol.custom-alpha {
+  list-style: none;
+  counter-reset: custom-counter;
+}
+ol.custom-alpha li {
+  counter-increment: custom-counter;
+  position: relative;
+  padding-left: 2em;
+}
+ol.custom-alpha li::before {
+  content: counter(custom-counter, lower-alpha) ") ";
+  position: absolute;
+  left: 0;
+}

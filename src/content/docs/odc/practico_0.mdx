@@ -1,0 +1,126 @@
+---
+title: Practico 0
+description: ODC
+---
+
+import "katex/dist/katex.min.css";
+import "./style.css";
+
+## Ejercicio 6
+
+sup A[8] = `1000_0000`$_2$ ^ B[8] = `1101_0000`$_2$ ^ C[8]:
+
+<ol className="custom-alpha">
+  <li>
+    $A + B = C$
+    
+    $$
+        \begin{array}{r}
+          \bin{   1000 0000} = A \\
+        + \bin{   1101 0000} = B \\
+          \hline
+          \bin{\ovf{1} 0101 0000} = C
+        \end{array}
+    $$  
+    
+    C = `1` `0101_0000`$_2$ $\implies$ Overflow = `1`$_2$ 
+  </li>
+
+  <li>
+    $A - B = C \implies A + \cii{B} = \cii{C}$   
+    $$ 
+    \begin{align*}
+      \overline{B} &= &\bin{0010 1111} \\
+                   &+ &\bin{1} \\
+                   \hline
+      \cii{B}     &= &\bin{0011 0000}
+    \end{align*}
+    $$
+
+    $$
+        \begin{align*}
+          \bin{  1000 0000} &= A \\
+        + \bin{  0011 0000} &= \cii{B} \\
+          \hline
+          \bin{  1011 0000} &= \cii{C}
+        \end{align*}
+    $$
+
+    $$
+      \begin {align*}
+        \cii { C}            &= \ci{C} &+ \bin { 1} \\
+        \bin { 1011 0000} &= \ci{C} &+ \bin { 1} \\
+        -\bin { 1}        &= &- \bin { 1} \\
+        \hline
+        \bin { 1010 1111} &= \ci{C} \\
+        \bin { 0101 0000} &= C
+
+      \end{align*}
+    $$
+
+  </li>
+
+  <li>
+    Obtenemos mayor rango de representacion.  
+    Operamos con un solo cero.
+  </li>
+</ ol>
+
+## Ejercicio 7
+
+<ol className="custom-alpha">
+  <li>
+    $$
+      \begin{align*}
+      &\ &- 149\ 744 &= \bin{x} \\ &
+      \bin{0} &- 74\ 817 \\ &
+      \bin{10} &- 37\ 408 \\ &
+      \bin{100} &- 18\ 704 \\ &
+      \bin{1000} &- 9\ 352 \\ &   
+      \bin{1000 0} &- 4\ 675 \\ &
+      \bin{1000 01} &- 2\ 337 \\ &   
+      \bin{1000 011} &- 1\ 168 \\ &   
+      \bin{1000 0110} &- 584 \\ &   
+      \bin{1000 0110 0} &- 292 \\ &
+      \bin{1000 0110 00} &- 146 \\ &
+      \bin{1000 0110 000} &- 73 \\ &   
+      \bin{1000 0110 0001} &- 36 \\ &
+      \bin{1000 0110 0001 0} &- 18 \\ &
+      \bin{1000 0110 0001 00} &-  9 \\ &
+      \bin{1000 0110 0001 001} &-  4 \\ &
+      \bin{1000 0110 0001 0010} &-  2 \\ &
+      \bin{1000 0110 0001 0010 0} &-  1 \\ &
+      \bin{1000 0110 0001 0010 01} &-x  \  \\ &
+      \ &-\bin{10 0001 1000 0100 1001} &= \bin{x} \\ &
+      \end{align*}
+    $$
+
+    WRONG  
+    $\bin{-x} = \bin{10 0100 1000 1111 0000}$
+
+    <table>
+      <thead>
+        <th>
+          byte
+        </th>
+        <th>
+          half-word
+        </th>
+        <th>
+          word
+        </th>
+      </thead>
+<tbody>
+<td>  
+  $\bin{1111 0000}$
+</td>
+<td>  
+  $\bin{0100 1000 1111 0000}$
+</td>
+<td>  
+  $\bin{0000 0000 0000 0010 0100 1000 1111 0000}$
+</td>
+</tbody>
+    </table>
+  </li>
+</ol>
