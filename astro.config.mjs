@@ -41,6 +41,7 @@ export default defineConfig({
             "\\cii": "\\overline{#1}^{\\text{(+1)}}",
             "\\ci": "\\overline{#1}",
             "\\bin": "\\texttt{#1}_{2}",
+            "\\binf": "{\\bin{#1}}_{.f}",
             "\\oct": "\\texttt{#1}_{8}",
             "\\hex": "\\texttt{#1}_{16}",
             "\\ovf": "\\colorbox{red}{\\textcolor{white}{\\texttt{#1}}}",

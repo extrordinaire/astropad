@@ -1,0 +1,68 @@
+---
+  title: Paradigmas
+  description: Paradigmas
+---
+
+# Parcial 2024
+
+```
+ 1 ProgramA() {
+ 2 x, y, z: integer;
+ 3
+ 4 procedure B() {
+ 5 y: integer;
+ 6 y=0;
+ 7 x=z+1;
+ 8 z=y+2;
+ 9 }
+ 10
+ 11 procedure C() {
+ 12 z: integer;
+ 13
+ 14 procedure D() {
+ 15 x: integer;
+ 16 x=z+ 1;
+ 17 y=x+ 1;
+ 18 call B();
+ 19 }
+ 20 z= 5;
+ 21 call D();
+ 22 }
+ 23
+ 24 x= 10; y= 11; z= 12;
+ 25 call C();
+ 26 print x, y, z;
+ 27 }
+```
+
+Se daria un comportamiento diferente en la linea 7, ya que `Z` fue definida de forma dinamica
+en 12, pero como en alcance estatico se ignora y se toma la de la clausula superior inmediata
+eso implica que para la linea 7, z fuese 12 para el alcance estatico y 5 para el alcance dinamico.
+
+Linea 16 por primera vez.
+
+x = 10, y = 11, z = 12
+
+RA -> A(), linea 26
+
+z' = 5 // z_global queda oculta
+
+RA -> C(), 22
+
+x' = z' + 1 -> x' 5 // x queda oculta
+
+y = x' + 1 -> y = 6
+
+RA -> D(), 19
+
+y' = 0 // y queda oculta
+
+x = z + 1
+dinamico: x' = z' + 1 -> x' = 6
+estatico: x = z + 1 -> x = 13
+
+z = y + 2
+dinamico:
+
+
+
